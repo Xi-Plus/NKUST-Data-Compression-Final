@@ -8,7 +8,7 @@ from XIPLUS03 import *
 
 algolist = {
 	"auto": [],
-	"xp03": [[XIPLUS03_encode, [-2, 2, 32]], [XIPLUS03_decode, []]],
+	"xp03": [[XIPLUS03_encode, [-2, 2, 32, True]], [XIPLUS03_decode, [True]]],
 }
 
 ctype = sys.argv[1]

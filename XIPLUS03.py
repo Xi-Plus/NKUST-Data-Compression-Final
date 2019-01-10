@@ -1,10 +1,11 @@
 import cv2
 import math
-from wavelet import *
 from bisect import bisect_left
+from wavelet import *
+from huffman import *
 
 
-def XIPLUS03_encode(infile, outfile, threshold1, threshold2, kquantizer):
+def XIPLUS03_encode(infile, outfile, threshold1, threshold2, kquantizer, usehuffman=False):
 	img = cv2.imread(infile, cv2.IMREAD_UNCHANGED)
 	if len(img.shape) == 2:
 		channel = 1
@@ -59,8 +60,14 @@ def XIPLUS03_encode(infile, outfile, threshold1, threshold2, kquantizer):
 				fout.write(bytes([int(temp[0:8], 2)]))
 				temp = temp[8:]
 
+	if usehuffman:
+		huffman_encode(outfile, outfile)
 
-def XIPLUS03_decode(infile, outfile):
+def XIPLUS03_decode(infile, outfile, usehuffman):
+	if usehuffman:
+		huffman_decode(infile, "temp.bin")
+		infile = "temp.bin"
+
 	with open(infile, "rb") as fin:
 		data = fin.read()
 
