@@ -60,11 +60,11 @@ elif ctype == "error":
 	fname1 = sys.argv[2]
 	fname2 = sys.argv[3]
 
-	img1 = cv2.imread(fname1, cv2.IMREAD_GRAYSCALE)
-	img2 = cv2.imread(fname2, cv2.IMREAD_GRAYSCALE)
+	img1 = cv2.imread(fname1, cv2.IMREAD_UNCHANGED)
+	img2 = cv2.imread(fname2, cv2.IMREAD_UNCHANGED)
 
 	diff = img2 - img1
-	print("error", math.sqrt(np.average(np.square(diff.flatten()))))
+	print("error", math.sqrt(np.average(np.square(diff))))
 
 else:
 	print("nothing to do")
