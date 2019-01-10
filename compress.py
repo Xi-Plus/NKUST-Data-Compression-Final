@@ -4,11 +4,13 @@ import math
 import time
 import cv2
 from XIPLUS03 import *
+from XIPLUS04 import *
 
 
 algolist = {
 	"auto": [],
 	"xp03": [[XIPLUS03_encode, [-2, 2, 32, True]], [XIPLUS03_decode, [True]]],
+	"xp04": [[XIPLUS04_encode, [-2, 2, 32, True]], [XIPLUS04_decode, [True]]],
 }
 
 ctype = sys.argv[1]
